@@ -1,0 +1,56 @@
+---
+hostname: benny
+storage:
+  root:
+    mount: "/"
+    partition: "/dev/sdb5"
+    fsType: ext4
+    disks:
+      "/dev/sdb":
+        type: ssd
+        model: Samsung 870 2TB
+  ubuntu:
+    mount: "/home/xuedi/Mount/ubuntu"
+    partition: "/dev/nvme0n1p1"
+    fsType: ext4
+    disks:
+      "/dev/nvme0n1":
+        type: nvme
+        model: Samsung 970 500MB
+  home:
+    mount: "/home/xuedi"
+    partition: "/dev/md127"
+    fsType: ext4
+    disks:
+      "/dev/nvme1n1":
+        type: nvme
+        model: Samsung 980 1TB
+      "/dev/nvme2n1":
+        type: nvme
+        model: Samsung 980 1TB
+      "/dev/nvme3n1":
+        type: nvme
+        model: Samsung 980 1TB
+      "/dev/nvme4n1":
+        type: nvme
+        model: Samsung 980 1TB
+  data:
+    mount: "/run/media/Temp"
+    partition: "/dev/md126"
+    fsType: btrfs
+    disks:
+      "/dev/sda":
+        type: hdd
+        model: Seagate IronWolf 8TB
+      "/dev/sdc":
+        type: hdd
+        model: Seagate IronWolf 8TB
+      "/dev/sdd":
+        type: hdd
+        model: Seagate IronWolf 8TB
+      "/dev/sde":
+        type: hdd
+        model: Seagate IronWolf 8TB
+      "/dev/sdf":
+        type: hdd
+        model: Seagate IronWolf 8TB
