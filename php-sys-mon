@@ -8,15 +8,19 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-$container = new ContainerBuilder();
-$container->setParameter('application_directory', __DIR__);
+try {
+    $container = new ContainerBuilder();
+    $container->setParameter('app_path', __DIR__);
 
-$loader = new YamlFileLoader($container, new FileLocator());
-$loader->load(__DIR__ . '/config/services.yml');
+    $loader = new YamlFileLoader($container, new FileLocator());
+    $loader->load(__DIR__ . '/config/services.yml');
 
-$container->compile();
-$container->get(Application::class)->run();
+    $container->compile();
+    $container->get(Application::class)->run();
 
-
+} catch (Exception $exception) {
+    echo "Error: " . $exception->getMessage() . PHP_EOL;
+    exit(1);
+}
 exit(0);
 

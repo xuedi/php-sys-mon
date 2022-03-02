@@ -3,20 +3,20 @@ hostname: benny
 storage:
   root:
     mount: "/"
-    partition: "/dev/sdb5"
+    partition: "/dev/sdb2"
     fsType: ext4
     disks:
       "/dev/sdb":
         type: ssd
         model: Samsung 870 2TB
-  ubuntu:
-    mount: "/home/xuedi/Mount/ubuntu"
-    partition: "/dev/nvme0n1p1"
+  boot:
+    mount: "/boot"
+    partition: "/dev/sdb1"
     fsType: ext4
     disks:
-      "/dev/nvme0n1":
-        type: nvme
-        model: Samsung 970 500MB
+      "/dev/sdb":
+        type: ssd
+        model: Samsung 870 2TB
   home:
     mount: "/home/xuedi"
     partition: "/dev/md127"
@@ -34,8 +34,24 @@ storage:
       "/dev/nvme4n1":
         type: nvme
         model: Samsung 980 1TB
+  games:
+    mount: "/home/xuedi/Games"
+    partition: "/dev/sdb3"
+    fsType: ext4
+    disks:
+      "/dev/sdb":
+        type: ssd
+        model: Samsung 870 2TB
+  ubuntu:
+    mount: "/run/media/ubuntu"
+    partition: "/dev/nvme0n1p1"
+    fsType: ext4
+    disks:
+      "/dev/nvme0n1":
+        type: nvme
+        model: Samsung 970 500MB
   data:
-    mount: "/run/media/Temp"
+    mount: "/run/media/Data"
     partition: "/dev/md126"
     fsType: btrfs
     disks:

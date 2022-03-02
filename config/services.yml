@@ -1,5 +1,6 @@
 parameters:
   version: '1.26.0'
+  configFile: '%app_path%/config/config.yaml'
 
 services:
   _defaults:
@@ -7,6 +8,7 @@ services:
     autoconfigure: true
     bind:
       string $version: '%version%'
+      string $appPath: '%configFile%'
 
   _instanceof:
     Symfony\Component\Console\Command\Command:
