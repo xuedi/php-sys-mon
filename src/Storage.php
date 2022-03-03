@@ -38,7 +38,7 @@ class Storage
 
     private function verifyFsType(string $fsType): FsType
     {
-        return new FsType($fsType);
+        return FsType::fromString($fsType);
     }
 
     private function verifyHardDrives(array $disks): array
@@ -83,16 +83,4 @@ class Storage
     {
         return $this->hardDrives;
     }
-
-    public function getHardDriveList(): string
-    {
-        $hardDrives = [];
-        foreach ($this->hardDrives as $hardDrive) {
-            $hardDrives[] = $hardDrive->getDevice()->asString();
-        }
-
-        return implode(', ', $hardDrives);
-    }
-
-
 }

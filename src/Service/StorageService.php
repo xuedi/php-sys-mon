@@ -41,7 +41,7 @@ class StorageService
                 $this->getSize($storage->getMount()),
                 $this->getUsed($storage->getMount()),
                 $this->getAverageTemperature($storage->getHardDrives()),
-                $storage->getHardDriveList(),
+                $this->getHardDriveList($storage->getHardDrives()),
             ];
         }
 
@@ -92,5 +92,21 @@ class StorageService
         }
 
         return round(array_sum($temperatures) / count($temperatures)) . '°';
+    }
+
+    private function getHardDriveList(array $drives): string
+    {
+        $hardDrives = [];
+        foreach ($drives as $hardDrive) {
+            $driveName = $hardDrive->getDevice()->asString();
+            $driveName = str_replace('/dev/', '', $driveName);
+            if (str_ends_with($driveName, 'n1')) {
+                $driveName = substr($driveName, 0, -2);
+            }
+            $temperature = $this->tempService->getHardDrive($hardDrive);
+            $hardDrives[] = "$driveName: {$temperature}°";
+        }
+
+        return implode(', ', $hardDrives);
     }
 }

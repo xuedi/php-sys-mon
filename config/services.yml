@@ -10,14 +10,33 @@ services:
       string $version: '%version%'
       string $appPath: '%configFile%'
 
+  Xuedi\PhpSysMon\:
+    resource: '../src/*'
+    #exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
   _instanceof:
     Symfony\Component\Console\Command\Command:
       tags: [ 'command' ]
-
-  Xuedi\PhpSysMon\:
-    resource: '../src/*'
+#    Xuedi\PhpSysMon\Service\TemperatureProvider:
+#      public: true
 
   Xuedi\PhpSysMon\Application:
     public: true
     arguments:
       - !tagged_iterator command
+
+
+
+
+# TODO: move into _instanceof and make dynamically via TemperatureProvider interface
+  Xuedi\PhpSysMon\Service\TemperatureProvider\Ssd:
+    public: true
+  Xuedi\PhpSysMon\Service\TemperatureProvider\Nvme:
+    public: true
+  Xuedi\PhpSysMon\Service\TemperatureProvider\Hdd:
+    public: true
+
+# TODO: figure out why can be autowired
+  Xuedi\PhpSysMon\Service\TemperatureService:
+    arguments:
+      - '@service_container'

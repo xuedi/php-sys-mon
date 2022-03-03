@@ -3,25 +3,33 @@
 namespace Xuedi\PhpSysMon;
 
 use RuntimeException;
+use Xuedi\PhpSysMon\Service\TemperatureProvider\Hdd;
+use Xuedi\PhpSysMon\Service\TemperatureProvider\Nvme;
+use Xuedi\PhpSysMon\Service\TemperatureProvider\Ssd;
 
 class HardDriveType
 {
-    const TYPE_SSD = 'ssd';
-    const TYPE_HDD = 'hdd';
-    const TYPE_NVME = 'nvme';
-    const VALID_TYPES = [
-        self::TYPE_SSD,
-        self::TYPE_HDD,
-        self::TYPE_NVME,
+    const SSD = 'ssd';
+    const HDD = 'hdd';
+    const NVME = 'nvme';
+    const PROVIDER = [
+        self::SSD => Ssd::class,
+        self::HDD => Hdd::class,
+        self::NVME => Nvme::class,
     ];
     private string $type;
 
     public function __construct(string $type)
     {
-        if (!in_array($type, self::VALID_TYPES)) {
+        if (!isset(self::PROVIDER[$type])) {
             throw new RuntimeException("Unknown HardDriveType: [$type]");
         }
         $this->type = $type;
+    }
+
+    public function getTemperatureProvider(): string
+    {
+        return self::PROVIDER[$this->type];
     }
 
     public function asString(): string
@@ -31,16 +39,16 @@ class HardDriveType
 
     public function isNvme(): bool
     {
-        return $this->type === self::TYPE_NVME;
+        return $this->type === self::NVME;
     }
 
     public function isHdd(): bool
     {
-        return $this->type === self::TYPE_HDD;
+        return $this->type === self::HDD;
     }
 
     public function isSsd(): bool
     {
-        return $this->type === self::TYPE_SSD;
+        return $this->type === self::SSD;
     }
 }
