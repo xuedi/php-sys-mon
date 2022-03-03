@@ -88,7 +88,7 @@ class StorageService
     {
         $temperatures = [];
         foreach ($drives as $drive) {
-            $temperatures[] = $this->tempService->getHardDrive($drive);
+            $temperatures[] = $this->tempService->measure($drive);
         }
 
         return round(array_sum($temperatures) / count($temperatures)) . '°';
@@ -103,7 +103,7 @@ class StorageService
             if (str_ends_with($driveName, 'n1')) {
                 $driveName = substr($driveName, 0, -2);
             }
-            $temperature = $this->tempService->getHardDrive($hardDrive);
+            $temperature = $this->tempService->measure($hardDrive);
             $hardDrives[] = "$driveName: {$temperature}°";
         }
 

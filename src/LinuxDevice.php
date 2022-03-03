@@ -11,6 +11,11 @@ class LinuxDevice
         $this->path = $path;
     }
 
+    public function getId(): string
+    {
+        return md5($this->path);
+    }
+
     public function asString(): string
     {
         return $this->path;
