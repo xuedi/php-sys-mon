@@ -1,10 +1,27 @@
 # php-sys-mon
-php based monitor of linux system
+php based cli tool to display basic linux information
 
+## example
+```
+Filesystem
++--------+-------------------+--------+-----------+-----------------+------+--------------------------------------------------+
+| Name   | Mount             | FsType | Size      | Used            | Temp | Devices                                          |
++--------+-------------------+--------+-----------+-----------------+------+--------------------------------------------------+
+| root   | /                 | ext4   | 315.93 GB | 19% -  59.03 GB | 25°  | sdb: 25°                                         |
+| boot   | /boot             | ext4   |   1.07 GB | 34% - 369.67 MB | 25°  | sdb: 25°                                         |
+| home   | /home/xuedi       | ext4   |   2.95 TB | 16% - 464.32 GB | 31°  | nvme1: 31°, nvme2: 31°, nvme3: 31°, nvme4: 31°   |
+| games  | /home/xuedi/Games | ext4   |   1.65 TB | 56% - 930.23 GB | 25°  | sdb: 25°                                         |
+| ubuntu | /run/media/ubuntu | ext4   | 491.11 GB | 28% - 139.80 GB | 37°  | nvme0: 37°                                       |
+| data   | /run/media/Data   | btrfs  |  32.01 TB | 21% -   6.80 TB | 38°  | sda: 39°, sdc: 37°, sdd: 40°, sde: 37°, sdf: 37° |
++--------+-------------------+--------+-----------+-----------------+------+--------------------------------------------------+
 
-TODO: 
- - create providers for parsing types of diskd ['hddtemp', 'nvme (smartctl)']
- - have a one time overview mode
- - have a continues plotting
- - have a web interface
-
+Sensors
++-------------+----------+--------------------+
+| CPU         | +42.0°C  | 880 RPM            |
+| Motherboard | +30.0°C  | 1207 RPM           |
+| Chipset     | +48.0°C  |                    |
+| VRM         | +37.0°C  |                    |
+| Harddrives  | +39.0°C  | 1205 RPM, 1180 RPM |
+| Power       | 142.00 W | 0 RPM              |
++-------------+----------+--------------------+
+```
