@@ -1,5 +1,30 @@
 ---
 hostname: benny
+sensors:
+  asus:
+    provider: "asuswmisensors-isa-0000"
+    items:
+      CPU:
+        value: "CPU Temperature"
+        extra: "CPU Fan"
+      Motherboard:
+        value: "Motherboard Temperature"
+        extra: "Chassis Fan 1"
+      Chipset:
+        value: "Chipset Temperature"
+      VRM:
+        value: "CPU VRM Temperature"
+      Harddrives:
+        value: "Tsensor Temperature"
+        extra:
+          - "Chassis Fan 2"
+          - "Chassis Fan 3"
+  corsair:
+    provider: "corsairpsu-hid-3-3"
+    items:
+      Power:
+        value: "power total"
+        extra: "psu fan"
 storage:
   root:
     mount: "/"
