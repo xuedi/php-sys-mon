@@ -16,5 +16,4 @@ class Nvme implements TemperatureProvider
 
         return $celsius;
     }
-
 }

@@ -12,5 +12,6 @@ update: ## Runs all kind of stuff
 	composer update
 	composer dump-autoload
 
-info: ## Server the Desktop-App via caddy
+run: ## Server the Desktop-App via caddy
 	@./php-sys-mon phpSysMon:dashboard
+

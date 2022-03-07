@@ -23,8 +23,15 @@ sensors:
     provider: "corsairpsu-hid-3-3"
     items:
       Power:
-        value: "power total"
-        extra: "psu fan"
+        value: "case temp"
+        extra:
+          - "psu fan"
+          - "power total"
+  wifi:
+    provider: "iwlwifi_1-virtual-0"
+    items:
+      WifiCard:
+        value: "temp1"
 storage:
   root:
     mount: "/"

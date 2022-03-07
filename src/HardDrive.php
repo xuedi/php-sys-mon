@@ -29,5 +29,4 @@ class HardDrive
     {
         return $this->type;
     }
-
 }

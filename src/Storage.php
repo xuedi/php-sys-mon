@@ -2,8 +2,6 @@
 
 namespace Xuedi\PhpSysMon;
 
-use function dump;
-
 class Storage
 {
     private string $name;

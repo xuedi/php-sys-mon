@@ -16,7 +16,6 @@ class Ssd implements TemperatureProvider
                 return $attribute['raw']['value'];
             }
         }
-
         return 0;
     }
 }
