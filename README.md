@@ -1,7 +1,6 @@
 [![Actions Status](https://github.com/xuedi/php-sys-mon/workflows/PHP-Unit/badge.svg)](https://github.com/xuedi/php-sys-mon/actions)
 [![Code Coverage](https://raw.githubusercontent.com/xuedi/php-sys-mon/main/tests/badge/coverage.svg?sanitize=true)](https://github.com/xuedi/php-sys-mon/blob/main/tests/badge_generator.php)
 
-
 # php-sys-mon
 
 PHP based cli tool to display basic linux information
