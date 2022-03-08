@@ -10,7 +10,7 @@ use Xuedi\PhpSysMon\Service\TemperatureProvider\Nvme;
 use Xuedi\PhpSysMon\Service\TemperatureProvider\Ssd;
 
 /**
- * @covers HardDriveType
+ * @covers \Xuedi\PhpSysMon\HardDriveType
  */
 final class HardDriveTypeTest extends TestCase
 {

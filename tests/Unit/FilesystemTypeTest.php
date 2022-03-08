@@ -7,7 +7,7 @@ use RuntimeException;
 use Xuedi\PhpSysMon\FilesystemType;
 
 /**
- * @covers FilesystemType
+ * @covers \Xuedi\PhpSysMon\FilesystemType
  */
 final class FilesystemTypeTest extends TestCase
 {

@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Xuedi\PhpSysMon\Sensor;
 
 /**
- * @covers Sensor
+ * @covers \Xuedi\PhpSysMon\Sensor
  */
 final class SensorTest extends TestCase
 {

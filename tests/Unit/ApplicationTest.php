@@ -9,7 +9,8 @@ use Xuedi\PhpSysMon\Service\SensorService;
 use Xuedi\PhpSysMon\Service\StorageService;
 
 /**
- * @covers Application
+ * @covers \Xuedi\PhpSysMon\Application
+ * @uses   \Xuedi\PhpSysMon\Command\DashboardCommand
  */
 final class ApplicationTest extends TestCase
 {

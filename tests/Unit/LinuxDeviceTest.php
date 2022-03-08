@@ -10,7 +10,7 @@ use Xuedi\PhpSysMon\HardDriveType;
 use Xuedi\PhpSysMon\LinuxDevice;
 
 /**
- * @covers LinuxDevice
+ * @covers \Xuedi\PhpSysMon\LinuxDevice
  */
 final class LinuxDeviceTest extends TestCase
 {

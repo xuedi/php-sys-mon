@@ -10,8 +10,9 @@ use Xuedi\PhpSysMon\HardDriveType;
 use Xuedi\PhpSysMon\LinuxDevice;
 
 /**
- * @covers HardDrive
- * @uses LinuxDevice
+ * @covers \Xuedi\PhpSysMon\HardDrive
+ * @uses   \Xuedi\PhpSysMon\LinuxDevice
+ * @uses   \Xuedi\PhpSysMon\HardDriveType
  */
 final class HardDriveTest extends TestCase
 {
