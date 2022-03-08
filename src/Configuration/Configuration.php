@@ -7,6 +7,7 @@ use Xuedi\PhpSysMon\FilesystemType;
 use Xuedi\PhpSysMon\LinuxPath;
 use Xuedi\PhpSysMon\Sensor;
 use Xuedi\PhpSysMon\Storage;
+use Xuedi\PhpSysMon\StorageCollection;
 
 class Configuration
 {
@@ -22,19 +23,19 @@ class Configuration
         return $this->appData['hostname'] ?? 'localhost';
     }
 
-    public function loadStorage(): array
+    public function loadStorage(): StorageCollection
     {
-        $storage = [];
+        $collection = new StorageCollection();
         foreach ($this->appData['storage'] as $name => $parameters) {
-            $storage[] = Storage::fromParameters(
+            $collection->add(Storage::fromParameters(
                 $name,
                 LinuxPath::fromString($parameters['mount']),
                 $parameters['partition'],
                 FilesystemType::fromString($parameters['fsType']),
                 $parameters['disks']
-            );
+            ));
         }
-        return $storage;
+        return $collection;
     }
 
     public function loadSensors(): array

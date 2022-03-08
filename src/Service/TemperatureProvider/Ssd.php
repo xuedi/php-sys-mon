@@ -4,6 +4,9 @@ namespace Xuedi\PhpSysMon\Service\TemperatureProvider;
 
 use Xuedi\PhpSysMon\LinuxPath;
 
+/**
+ * @psalm-suppress ForbiddenCode
+ */
 class Ssd implements TemperatureProvider
 {
     public function getTemperature(LinuxPath $device): int

@@ -5,11 +5,11 @@ namespace Xuedi\PhpSysMon\Service;
 use Xuedi\PhpSysMon\Configuration\Configuration;
 use Xuedi\PhpSysMon\LinuxPath;
 use Xuedi\PhpSysMon\Storage;
+use Xuedi\PhpSysMon\StorageCollection;
 
 class StorageService
 {
-    /** @var array<int|Storage> */
-    private array $storageList;
+    private StorageCollection $storageList;
     private TemperatureService $tempService;
 
     public function __construct(Configuration $config, TemperatureService $tempService)
@@ -52,7 +52,7 @@ class StorageService
     private function getUsed(LinuxPath $mount): string
     {
         if (!is_dir($mount->asString())) {
-            return 0;
+            return '0';
         }
         $total = disk_total_space($mount->asString());
         if ($total == 0) {
@@ -68,10 +68,10 @@ class StorageService
 
     private function getSize(LinuxPath $past): string
     {
-        return (is_dir($past->asString())) ? $this->humanSize(disk_total_space($past->asString())) : 0;
+        return (is_dir($past->asString())) ? $this->humanSize(disk_total_space($past->asString())) : '0';
     }
 
-    private function humanSize($bytes): string
+    private function humanSize(float $bytes): string
     {
         if ($bytes == 0) {
             return '        -';

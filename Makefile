@@ -24,5 +24,5 @@ test_unit: ## run unit tests
 	@./vendor/bin/phpunit --configuration tests/phpunit.xml
 
 test_psalm: ## run psalm
-	@./vendor/bin/psalm --config='tests/psalm.xml' --show-info=false
+	@./vendor/bin/psalm --config='tests/psalm.xml' --show-info=true
 
