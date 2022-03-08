@@ -26,3 +26,7 @@ test_unit: ## run unit tests
 test_psalm: ## run psalm
 	@./vendor/bin/psalm --config='tests/psalm.xml' --show-info=true
 
+coverage_badge: test_unit ## generate badge and add it to repo
+	php tests/badge_generator.php
+	git add tests/badge/coverage.svg
+
