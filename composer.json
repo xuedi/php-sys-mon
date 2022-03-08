@@ -24,7 +24,7 @@
   "require-dev": {
     "symfony/var-dumper": "^6.0",
     "phpunit/phpunit": "^9.5",
-    "vimeo/psalm": "^4.22|5.x-dev",
+    "vimeo/psalm": "5.0.0-alpha1",
     "roave/security-advisories": "dev-latest"
   }
 }
