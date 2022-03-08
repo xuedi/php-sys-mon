@@ -12,9 +12,17 @@ update: ## update composer dependencies
 	composer update
 	composer dump-autoload
 
-test: ## run tests
-	./vendor/bin/phpunit --configuration tests/phpunit.xml
-
 run: ## show dashboard
 	@./php-sys-mon dashboard
+
+
+
+
+tests: test_unit test_psalm ## run all tests
+
+test_unit: ## run unit tests
+	@./vendor/bin/phpunit --configuration tests/phpunit.xml
+
+test_psalm: ## run psalm
+	@./vendor/bin/psalm --config='tests/psalm.xml' --show-info=false
 

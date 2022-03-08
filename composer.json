@@ -3,7 +3,8 @@
   "description": "collect system informations",
   "require-dev": {
     "symfony/var-dumper": "^6.0",
-    "phpunit/phpunit": "^9.5"
+    "phpunit/phpunit": "^9.5",
+    "vimeo/psalm": "^4.22"
   },
   "autoload": {
     "psr-4": {
