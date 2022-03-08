@@ -7,7 +7,7 @@ class Storage
     private string $name;
     private string $mount;
     private string $partition;
-    private FsType $fsType;
+    private FilesystemType $fsType;
     private array $hardDrives;
 
     public function __construct(string $name, array $data)
@@ -15,7 +15,7 @@ class Storage
         $this->name = $this->verifyName($name);
         $this->mount = $this->verifyMount($data['mount']);
         $this->partition = $this->verifyPartition($data['partition']);
-        $this->fsType = $this->verifyFsType($data['fsType']);
+        $this->fsType = FilesystemType::fromString($data['fsType']);
         $this->hardDrives = $this->verifyHardDrives($data['disks']);
     }
 
@@ -34,21 +34,13 @@ class Storage
         return $partition;
     }
 
-    private function verifyFsType(string $fsType): FsType
-    {
-        return FsType::fromString($fsType);
-    }
-
     private function verifyHardDrives(array $disks): array
     {
         $hardDrives = [];
-        foreach ($disks as $device => $data) {
-            $type = $data['type'] ?? 'unknown';
-            $model = $data['model'] ?? 'unknown';
-            $hardDrives[] = new HardDrive(
-                new LinuxDevice($device),
-                new HardDriveType($type),
-                new HardDriveModel($model)
+        foreach ($disks as $device => $type) {
+            $hardDrives[] = HardDrive::fromParameters(
+                LinuxDevice::fromString($device),
+                HardDriveType::fromString($type)
             );
         }
 
@@ -72,7 +64,7 @@ class Storage
         return $this->partition;
     }
 
-    public function getFsType(): FsType
+    public function getFsType(): FilesystemType
     {
         return $this->fsType;
     }

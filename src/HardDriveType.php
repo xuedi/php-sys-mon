@@ -19,11 +19,17 @@ class HardDriveType
     ];
     private string $type;
 
-    public function __construct(string $type)
+    public static function fromString(string $type): self
     {
         if (!isset(self::PROVIDER[$type])) {
             throw new RuntimeException("Unknown HardDriveType: [$type]");
         }
+
+        return new self($type);
+    }
+
+    private function __construct(string $type)
+    {
         $this->type = $type;
     }
 

@@ -38,67 +38,41 @@ storage:
     partition: "/dev/sdb2"
     fsType: ext4
     disks:
-      "/dev/sdb":
-        type: ssd
-        model: Samsung 870 2TB
+      "/dev/sdb": ssd
   boot:
     mount: "/boot"
     partition: "/dev/sdb1"
     fsType: ext4
     disks:
-      "/dev/sdb":
-        type: ssd
-        model: Samsung 870 2TB
+      "/dev/sdb": ssd
   home:
     mount: "/home/xuedi"
     partition: "/dev/md127"
     fsType: ext4
     disks:
-      "/dev/nvme1n1":
-        type: nvme
-        model: Samsung 980 1TB
-      "/dev/nvme2n1":
-        type: nvme
-        model: Samsung 980 1TB
-      "/dev/nvme3n1":
-        type: nvme
-        model: Samsung 980 1TB
-      "/dev/nvme4n1":
-        type: nvme
-        model: Samsung 980 1TB
+      "/dev/nvme1n1": nvme
+      "/dev/nvme2n1": nvme
+      "/dev/nvme3n1": nvme
+      "/dev/nvme4n1": nvme
   games:
     mount: "/home/xuedi/Games"
     partition: "/dev/sdb3"
     fsType: ext4
     disks:
-      "/dev/sdb":
-        type: ssd
-        model: Samsung 870 2TB
+      "/dev/sdb": ssd
   ubuntu:
     mount: "/run/media/ubuntu"
     partition: "/dev/nvme0n1p1"
     fsType: ext4
     disks:
-      "/dev/nvme0n1":
-        type: nvme
-        model: Samsung 970 500MB
+      "/dev/nvme0n1": nvme
   data:
     mount: "/run/media/Data"
     partition: "/dev/md126"
     fsType: btrfs
     disks:
-      "/dev/sda":
-        type: hdd
-        model: Seagate IronWolf 8TB
-      "/dev/sdc":
-        type: hdd
-        model: Seagate IronWolf 8TB
-      "/dev/sdd":
-        type: hdd
-        model: Seagate IronWolf 8TB
-      "/dev/sde":
-        type: hdd
-        model: Seagate IronWolf 8TB
-      "/dev/sdf":
-        type: hdd
-        model: Seagate IronWolf 8TB
+      "/dev/sda": hdd
+      "/dev/sdc": hdd
+      "/dev/sdd": hdd
+      "/dev/sde": hdd
+      "/dev/sdf": hdd

@@ -55,7 +55,7 @@ class Configuration
     {
         $sensors = [];
         foreach ($data as $value) {
-            $sensors[] = new Sensor($name, $value);
+            $sensors[] = Sensor::fromParameters($name, $value);
         }
 
         return $sensors;

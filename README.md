@@ -65,8 +65,7 @@ root:
   partition: "/dev/sdb2"
   fsType: ext4
   disks:
-    "/dev/sdb":
-      type: ssd
+    "/dev/sdb": ssd
 ```
 
 ### sensors

@@ -2,11 +2,13 @@
   "name": "xuedi/php-sys-mon",
   "description": "collect system informations",
   "require-dev": {
-    "symfony/var-dumper": "^6.0"
+    "symfony/var-dumper": "^6.0",
+    "phpunit/phpunit": "^9.5"
   },
   "autoload": {
     "psr-4": {
-      "Xuedi\\PhpSysMon\\": "src"
+      "Xuedi\\PhpSysMon\\": "src",
+      "Xuedi\\PhpSysMon\\Tests\\": "tests"
     }
   },
   "authors": [

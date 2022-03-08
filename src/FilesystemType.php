@@ -4,7 +4,7 @@ namespace Xuedi\PhpSysMon;
 
 use RuntimeException;
 
-class FsType
+class FilesystemType
 {
     const VALID_TYPES = ['btrfs', 'ext4'];
     private string $type;
@@ -12,7 +12,7 @@ class FsType
     public static function fromString(string $type): self
     {
         if (!in_array($type, self::VALID_TYPES)) {
-            throw new RuntimeException("Unknown FsType: [$type]");
+            throw new RuntimeException("Unknown FilesystemType: [$type]");
         }
 
         return new self($type);

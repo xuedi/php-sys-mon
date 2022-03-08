@@ -6,23 +6,21 @@ class HardDrive
 {
     private LinuxDevice $device;
     private HardDriveType $type;
-    private HardDriveModel $model;
 
-    public function __construct(LinuxDevice $device, HardDriveType $type, HardDriveModel $model)
+    public static function fromParameters(LinuxDevice $device, HardDriveType $type): self
+    {
+        return new self($device, $type);
+    }
+
+    private function __construct(LinuxDevice $device, HardDriveType $type)
     {
         $this->device = $device;
-        $this->model = $model;
         $this->type = $type;
     }
 
     public function getDevice(): LinuxDevice
     {
         return $this->device;
-    }
-
-    public function getModel(): HardDriveModel
-    {
-        return $this->model;
     }
 
     public function getType(): HardDriveType
