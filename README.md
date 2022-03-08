@@ -132,6 +132,7 @@ Sensors
 ## roadmap
 
 There are a few thing that are in progress:
+- set a fixed version of vimeo/psalm, now is dev, due to a feature still in alpha
 - refactoring to build a best practise php codebase
 - a self refreshing web interface
 - filesystem health

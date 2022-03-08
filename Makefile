@@ -12,6 +12,10 @@ update: ## update composer dependencies
 	composer update
 	composer dump-autoload
 
+infos: ## show various environment infos
+	php --version
+	composer show --tree
+
 run: ## show dashboard
 	@./php-sys-mon dashboard
 
