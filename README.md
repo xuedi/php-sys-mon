@@ -20,7 +20,7 @@ Reducing redundancies of linux tools is a work in progress.
 | fedora   | sudo dfn install lm_sensors hddtemp                  |
 | openSuse | sudo zypper install lm_sensors hddtemp               |
 
-#### php requirements
+### php requirements
 
 Since this is a PHP practise app, it is using version 8.1 of PHP
 
