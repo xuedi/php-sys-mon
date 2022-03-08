@@ -2,11 +2,11 @@
 
 namespace Xuedi\PhpSysMon\Service\TemperatureProvider;
 
-use Xuedi\PhpSysMon\LinuxDevice;
+use Xuedi\PhpSysMon\LinuxPath;
 
 class Hdd implements TemperatureProvider
 {
-    public function getTemperature(LinuxDevice $device): int
+    public function getTemperature(LinuxPath $device): int
     {
         $command = "sudo hddtemp --unit=C --wake-up --numeric " . $device->asString();
 

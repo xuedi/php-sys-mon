@@ -3,6 +3,7 @@
 namespace Xuedi\PhpSysMon\Service;
 
 use Xuedi\PhpSysMon\Configuration\Configuration;
+use Xuedi\PhpSysMon\LinuxPath;
 use Xuedi\PhpSysMon\Storage;
 
 class StorageService
@@ -36,7 +37,7 @@ class StorageService
         foreach ($this->storageList as $storage) {
             $displayData[] = [
                 $storage->getName(),
-                $storage->getMount(),
+                $storage->getMount()->asString(),
                 $storage->getFsType()->asString(),
                 $this->getSize($storage->getMount()),
                 $this->getUsed($storage->getMount()),
@@ -48,26 +49,26 @@ class StorageService
         return $displayData;
     }
 
-    private function getUsed(string $mount): string
+    private function getUsed(LinuxPath $mount): string
     {
-        if (!is_dir($mount)) {
+        if (!is_dir($mount->asString())) {
             return 0;
         }
-        $total = disk_total_space($mount);
+        $total = disk_total_space($mount->asString());
         if ($total == 0) {
             return '    -          ';
         }
 
-        $free = disk_free_space($mount);
-        $used = disk_total_space($mount) - $free;
+        $free = disk_free_space($mount->asString());
+        $used = disk_total_space($mount->asString()) - $free;
         $per = ($used / $total) * 100;
 
         return round($per) . '% - ' . $this->humanSize($total - $free);
     }
 
-    private function getSize(string $mount): string
+    private function getSize(LinuxPath $past): string
     {
-        return (is_dir($mount)) ? $this->humanSize(disk_total_space($mount)) : 0;
+        return (is_dir($past->asString())) ? $this->humanSize(disk_total_space($past->asString())) : 0;
     }
 
     private function humanSize($bytes): string

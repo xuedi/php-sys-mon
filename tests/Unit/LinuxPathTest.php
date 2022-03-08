@@ -7,19 +7,19 @@ use RuntimeException;
 use Xuedi\PhpSysMon\FilesystemType;
 use Xuedi\PhpSysMon\HardDrive;
 use Xuedi\PhpSysMon\HardDriveType;
-use Xuedi\PhpSysMon\LinuxDevice;
+use Xuedi\PhpSysMon\LinuxPath;
 
 /**
- * @covers \Xuedi\PhpSysMon\LinuxDevice
+ * @covers \Xuedi\PhpSysMon\LinuxPath
  */
-final class LinuxDeviceTest extends TestCase
+final class LinuxPathTest extends TestCase
 {
     public function testCanBeCreatedFromValidStrings(): void
     {
         $expectedDevice = '/tmp';
         $expectedId = md5($expectedDevice);
 
-        $subject = LinuxDevice::fromString($expectedDevice);
+        $subject = LinuxPath::fromString($expectedDevice);
 
         $this->assertEquals($expectedId, $subject->getId());
         $this->assertEquals($expectedDevice, $subject->asString());
@@ -30,7 +30,7 @@ final class LinuxDeviceTest extends TestCase
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage("LinuxDevice cant be empty");
 
-        LinuxDevice::fromString('');
+        LinuxPath::fromString('');
     }
 
     public function testCanCreateWithoutStartingSlash(): void
@@ -38,7 +38,7 @@ final class LinuxDeviceTest extends TestCase
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage("LinuxDevice must start with a slash");
 
-        LinuxDevice::fromString('test');
+        LinuxPath::fromString('test');
     }
 
     public function testCanCreateWithTailingSlash(): void
@@ -46,6 +46,6 @@ final class LinuxDeviceTest extends TestCase
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage("LinuxDevice cant have a tailing slash");
 
-        LinuxDevice::fromString('/tmp/');
+        LinuxPath::fromString('/tmp/');
     }
 }

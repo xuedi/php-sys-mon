@@ -3,6 +3,8 @@
 namespace Xuedi\PhpSysMon\Configuration;
 
 use Symfony\Component\Yaml\Yaml;
+use Xuedi\PhpSysMon\FilesystemType;
+use Xuedi\PhpSysMon\LinuxPath;
 use Xuedi\PhpSysMon\Sensor;
 use Xuedi\PhpSysMon\Storage;
 
@@ -24,7 +26,13 @@ class Configuration
     {
         $storage = [];
         foreach ($this->appData['storage'] as $name => $parameters) {
-            $storage[] = new Storage($name, $parameters);
+            $storage[] = Storage::fromParameters(
+                $name,
+                LinuxPath::fromString($parameters['mount']),
+                $parameters['partition'],
+                FilesystemType::fromString($parameters['fsType']),
+                $parameters['disks']
+            );
         }
         return $storage;
     }

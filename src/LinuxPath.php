@@ -4,7 +4,7 @@ namespace Xuedi\PhpSysMon;
 
 use RuntimeException;
 
-class LinuxDevice
+class LinuxPath
 {
     private string $path;
 
@@ -16,7 +16,7 @@ class LinuxDevice
         if ($path[0] !== '/') {
             throw new RuntimeException("LinuxDevice must start with a slash");
         }
-        if (str_ends_with($path, '/')) {
+        if (str_ends_with($path, '/') && $path !== '/') {
             throw new RuntimeException("LinuxDevice cant have a tailing slash");
         }
         return new self($path);

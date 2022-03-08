@@ -5,41 +5,31 @@ namespace Xuedi\PhpSysMon;
 class Storage
 {
     private string $name;
-    private string $mount;
     private string $partition;
-    private FilesystemType $fsType;
     private array $hardDrives;
+    private LinuxPath $mount;
+    private FilesystemType $fsType;
 
-    public function __construct(string $name, array $data)
+    public static function fromParameters(string $name, LinuxPath $mount, string $partition, FilesystemType $fsType, array $hardDrives): self
     {
-        $this->name = $this->verifyName($name);
-        $this->mount = $this->verifyMount($data['mount']);
-        $this->partition = $this->verifyPartition($data['partition']);
-        $this->fsType = FilesystemType::fromString($data['fsType']);
-        $this->hardDrives = $this->verifyHardDrives($data['disks']);
+        return new self($name, $mount, $partition, $fsType, $hardDrives);
     }
 
-    private function verifyName(string $name): string
+    private function __construct(string $name, LinuxPath $mount, string $partition, FilesystemType $fsType, array $hardDrives)
     {
-        return $name;
+        $this->name = $name;
+        $this->mount = $mount;
+        $this->partition = $partition;
+        $this->fsType = $fsType;
+        $this->hardDrives = $this->buildHardDrives($hardDrives);
     }
 
-    private function verifyMount(string $mount): string
-    {
-        return $mount;
-    }
-
-    private function verifyPartition(string $partition): string
-    {
-        return $partition;
-    }
-
-    private function verifyHardDrives(array $disks): array
+    private function buildHardDrives(array $disks): array
     {
         $hardDrives = [];
         foreach ($disks as $device => $type) {
             $hardDrives[] = HardDrive::fromParameters(
-                LinuxDevice::fromString($device),
+                LinuxPath::fromString($device),
                 HardDriveType::fromString($type)
             );
         }
@@ -54,7 +44,7 @@ class Storage
         return $this->name;
     }
 
-    public function getMount(): string
+    public function getMount(): LinuxPath
     {
         return $this->mount;
     }

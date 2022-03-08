@@ -2,11 +2,11 @@
 
 namespace Xuedi\PhpSysMon\Service\TemperatureProvider;
 
-use Xuedi\PhpSysMon\LinuxDevice;
+use Xuedi\PhpSysMon\LinuxPath;
 
 class Nvme implements TemperatureProvider
 {
-    public function getTemperature(LinuxDevice $device): int
+    public function getTemperature(LinuxPath $device): int
     {
         $command = "sudo nvme smart-log  -o json " . $device->asString();
         $json = shell_exec($command);
