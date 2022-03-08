@@ -13,7 +13,7 @@ update: ## update composer dependencies
 	composer dump-autoload
 
 test: ## run tests
-	./vendor/bin/phpunit tests
+	./vendor/bin/phpunit --configuration tests/phpunit.xml
 
 run: ## show dashboard
 	@./php-sys-mon dashboard

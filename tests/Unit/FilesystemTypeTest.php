@@ -6,6 +6,9 @@ use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use Xuedi\PhpSysMon\FilesystemType;
 
+/**
+ * @covers FilesystemType
+ */
 final class FilesystemTypeTest extends TestCase
 {
     /** @dataProvider getTypeProvider */

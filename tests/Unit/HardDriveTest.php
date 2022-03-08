@@ -9,6 +9,10 @@ use Xuedi\PhpSysMon\HardDrive;
 use Xuedi\PhpSysMon\HardDriveType;
 use Xuedi\PhpSysMon\LinuxDevice;
 
+/**
+ * @covers HardDrive
+ * @uses LinuxDevice
+ */
 final class HardDriveTest extends TestCase
 {
     public function testCanBeCreatedFromValidStrings(): void

@@ -8,6 +8,9 @@ use Xuedi\PhpSysMon\Command\DashboardCommand;
 use Xuedi\PhpSysMon\Service\SensorService;
 use Xuedi\PhpSysMon\Service\StorageService;
 
+/**
+ * @covers Application
+ */
 final class ApplicationTest extends TestCase
 {
     public function testCanBuildApplication(): void

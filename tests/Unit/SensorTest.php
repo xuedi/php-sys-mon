@@ -5,6 +5,9 @@ namespace Xuedi\PhpSysMon\Tests\Unit;
 use PHPUnit\Framework\TestCase;
 use Xuedi\PhpSysMon\Sensor;
 
+/**
+ * @covers Sensor
+ */
 final class SensorTest extends TestCase
 {
     public function testCanBeCreatedFromValidStrings(): void
