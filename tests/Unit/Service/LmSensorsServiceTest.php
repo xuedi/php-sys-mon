@@ -3,11 +3,9 @@
 namespace Xuedi\PhpSysMon\Tests\Unit\Service;
 
 use PHPUnit\Framework\TestCase;
-use Xuedi\PhpSysMon\Configuration\Configuration;
+use Xuedi\PhpSysMon\Helpers\ShellWrapper;
 use Xuedi\PhpSysMon\Sensor;
 use Xuedi\PhpSysMon\Service\LmSensorsService;
-use Xuedi\PhpSysMon\Service\SensorService;
-use Xuedi\PhpSysMon\ShellWrapper;
 
 /**
  * @covers \Xuedi\PhpSysMon\Service\LmSensorsService

@@ -2,8 +2,8 @@
 
 namespace Xuedi\PhpSysMon\Service\TemperatureProvider;
 
+use Xuedi\PhpSysMon\Helpers\ShellWrapper;
 use Xuedi\PhpSysMon\LinuxPath;
-use Xuedi\PhpSysMon\ShellWrapper;
 
 /**
  * @psalm-suppress ForbiddenCode

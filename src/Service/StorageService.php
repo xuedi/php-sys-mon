@@ -3,19 +3,22 @@
 namespace Xuedi\PhpSysMon\Service;
 
 use Xuedi\PhpSysMon\Configuration\Configuration;
+use Xuedi\PhpSysMon\Helpers\FilesystemWrapper;
 use Xuedi\PhpSysMon\LinuxPath;
-use Xuedi\PhpSysMon\Storage;
 use Xuedi\PhpSysMon\StorageCollection;
 
 class StorageService
 {
+    private array $cache = [];
     private StorageCollection $storageList;
     private TemperatureService $tempService;
+    private FilesystemWrapper $fsWrapper;
 
-    public function __construct(Configuration $config, TemperatureService $tempService)
+    public function __construct(Configuration $config, TemperatureService $tempService, FilesystemWrapper $fsWrapper)
     {
         $this->storageList = $config->loadStorage();
         $this->tempService = $tempService;
+        $this->fsWrapper = $fsWrapper;
     }
 
     public function getHeaders(): array
@@ -51,16 +54,16 @@ class StorageService
 
     private function getUsed(LinuxPath $mount): string
     {
-        if (!is_dir($mount->asString())) {
+        if (!$this->fsWrapper->is_dir($mount->asString())) {
             return '0';
         }
-        $total = disk_total_space($mount->asString());
+        $total = $this->getTotalDiskSpace($mount->asString());
         if ($total == 0) {
             return '    -          ';
         }
 
-        $free = disk_free_space($mount->asString());
-        $used = disk_total_space($mount->asString()) - $free;
+        $free = $this->fsWrapper->disk_free_space($mount->asString());
+        $used = $this->getTotalDiskSpace($mount->asString()) - $free;
         $per = ($used / $total) * 100;
 
         return round($per) . '% - ' . $this->humanSize($total - $free);
@@ -68,7 +71,7 @@ class StorageService
 
     private function getSize(LinuxPath $past): string
     {
-        return (is_dir($past->asString())) ? $this->humanSize(disk_total_space($past->asString())) : '0';
+        return (is_dir($past->asString())) ? $this->humanSize($this->getTotalDiskSpace($past->asString())) : '0';
     }
 
     private function humanSize(float $bytes): string
@@ -109,5 +112,16 @@ class StorageService
         }
 
         return implode(', ', $hardDrives);
+    }
+
+    private function getTotalDiskSpace(string $path): int
+    {
+        if (isset($this->cache[$path])) {
+            return $this->cache[$path];
+        }
+        $space = $this->fsWrapper->disk_total_space($path);
+        $this->cache[$path] = $space;
+
+        return (int)$space;
     }
 }

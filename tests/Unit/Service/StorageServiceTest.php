@@ -8,6 +8,7 @@ use Xuedi\PhpSysMon\Configuration\Configuration;
 use Xuedi\PhpSysMon\FilesystemType;
 use Xuedi\PhpSysMon\HardDrive;
 use Xuedi\PhpSysMon\HardDriveType;
+use Xuedi\PhpSysMon\Helpers\FilesystemWrapper;
 use Xuedi\PhpSysMon\LinuxPath;
 use Xuedi\PhpSysMon\Service\StorageService;
 use Xuedi\PhpSysMon\Service\TemperatureService;
@@ -25,61 +26,87 @@ use Xuedi\PhpSysMon\StorageCollection;
  */
 final class StorageServiceTest extends TestCase
 {
-    private StorageService $subject;
-    private MockObject|StorageService $config;
-
-    public function setUp(): void
-    {
-        $this->config = $this->createMock(Configuration::class);
-        $this->config
-            ->expects($this->once())
-            ->method('loadStorage')
-            ->willReturn($this->getStorageCollection());
-
-        $tempService = $this->createMock(TemperatureService::class);
-
-        $this->subject = new StorageService(
-            $this->config,
-            $tempService
-        );
-    }
-
     public function testCanGetHeaders(): void
     {
         $expected = ['Name', 'Mount', 'FsType', 'Size', 'Used', 'Temp', 'Devices'];
 
-        $this->assertEquals($expected, $this->subject->getHeaders());
+        $configMock = $this->createMock(Configuration::class);
+        $fsWrapperMock = $this->createMock(FilesystemWrapper::class);
+        $tempServiceMock = $this->createMock(TemperatureService::class);
+
+        $subject = new StorageService(
+            $configMock,
+            $tempServiceMock,
+            $fsWrapperMock
+        );
+
+        $this->assertEquals($expected, $subject->getHeaders());
     }
 
     public function testCanGetRows(): void
     {
-        $expected = [
+        $name = 'name';
+        $diskSpace = 12233445635234.0;
+        $partition = '/dev/nvme1n1';
+        $expectedMount = '/home';
+        $expectedRows = [
             [
                 'name',
-                '/dev/sda',
+                $expectedMount,
                 'ext4',
-                '0',
-                '0',
+                ' 12.23 TB',
+                '58% -   7.14 TB',
                 '0°',
-                'sda: °',
+                'nvme1: °',
             ]
         ];
 
-        $this->assertEquals($expected, $this->subject->getRows());
-    }
-
-    private function getStorageCollection(): StorageCollection
-    {
-        return new StorageCollection(
+        $storageCollection = new StorageCollection(
             Storage::fromParameters(
-                'name',
-                LinuxPath::fromString('/dev/sda'),
-                '/home/',
+                $name,
+                LinuxPath::fromString($expectedMount),
+                $partition,
                 FilesystemType::fromString('ext4'),
                 [
-                    '/dev/sda' => 'hdd',
+                    $partition => 'nvme',
                 ]
             )
         );
+
+        $configMock = $this->createMock(Configuration::class);
+        $configMock
+            ->expects($this->once())
+            ->method('loadStorage')
+            ->willReturn($storageCollection);
+
+        $fsWrapperMock = $this->createMock(FilesystemWrapper::class);
+        $fsWrapperMock
+            ->expects($this->once())
+            ->method('is_dir')
+            ->with($expectedMount)
+            ->willReturn(true);
+        $fsWrapperMock
+            ->expects($this->once())
+            ->method('disk_total_space')
+            ->with($expectedMount)
+            ->willReturn($diskSpace);
+        $fsWrapperMock
+            ->expects($this->once())
+            ->method('disk_free_space')
+            ->with($expectedMount)
+            ->willReturn($diskSpace / 2.4);
+
+        $tempServiceMock = $this->createMock(TemperatureService::class);
+
+
+
+        $subject = new StorageService(
+            $configMock,
+            $tempServiceMock,
+            $fsWrapperMock
+        );
+
+        $this->assertEquals($expectedRows, $subject->getRows());
     }
+
 }

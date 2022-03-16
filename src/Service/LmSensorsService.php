@@ -2,8 +2,8 @@
 
 namespace Xuedi\PhpSysMon\Service;
 
+use Xuedi\PhpSysMon\Helpers\ShellWrapper;
 use Xuedi\PhpSysMon\Sensor;
-use Xuedi\PhpSysMon\ShellWrapper;
 
 class LmSensorsService
 {

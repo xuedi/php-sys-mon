@@ -3,10 +3,9 @@
 namespace Xuedi\PhpSysMon\Tests\Unit\Service\TemperatureProvider;
 
 use PHPUnit\Framework\TestCase;
+use Xuedi\PhpSysMon\Helpers\ShellWrapper;
 use Xuedi\PhpSysMon\LinuxPath;
-use Xuedi\PhpSysMon\Service\TemperatureProvider\Hdd;
 use Xuedi\PhpSysMon\Service\TemperatureProvider\Nvme;
-use Xuedi\PhpSysMon\ShellWrapper;
 
 /**
  * @covers \Xuedi\PhpSysMon\Service\TemperatureProvider\Nvme

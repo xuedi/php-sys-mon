@@ -1,6 +1,6 @@
 <?php
 
-namespace Xuedi\PhpSysMon;
+namespace Xuedi\PhpSysMon\Helpers;
 
 /**
  * @codeCoverageIgnore
