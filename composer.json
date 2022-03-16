@@ -1,6 +1,6 @@
 {
   "name": "xuedi/php-sys-mon",
-  "description": "collect system informations",
+  "description": "collect system information",
   "authors": [
     {
       "name": "Daniel Koch",
@@ -24,7 +24,8 @@
   "require-dev": {
     "symfony/var-dumper": "^6.0",
     "phpunit/phpunit": "^9.5",
-    "vimeo/psalm": "5.0.0-alpha1",
-    "roave/security-advisories": "dev-latest"
+    "vimeo/psalm": "4.22.0",
+    "roave/security-advisories": "dev-latest",
+    "psalm/plugin-phpunit": "^0.16.1"
   }
 }

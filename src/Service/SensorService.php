@@ -7,9 +7,9 @@ use Xuedi\PhpSysMon\Configuration\Configuration;
 class SensorService
 {
     private array $sensorNodes;
-    private LmSensors $lmSensors;
+    private LmSensorsService $lmSensors;
 
-    public function __construct(Configuration $config, LmSensors $lmSensors)
+    public function __construct(Configuration $config, LmSensorsService $lmSensors)
     {
         $this->sensorNodes = $config->loadSensors();
         $this->lmSensors = $lmSensors;
@@ -26,6 +26,7 @@ class SensorService
         }
         return $rows;
     }
+
     private function getNode(array $sensorNode): string
     {
         $list = [];

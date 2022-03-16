@@ -3,14 +3,15 @@
 namespace Xuedi\PhpSysMon\Service;
 
 use Xuedi\PhpSysMon\Sensor;
+use Xuedi\PhpSysMon\ShellWrapper;
 
-class LmSensors
+class LmSensorsService
 {
     private $blocks;
 
-    public function __construct()
+    public function __construct(ShellWrapper $wrapper)
     {
-        $this->blocks = $this->load();
+        $this->blocks = $this->load($wrapper);
     }
 
     public function read(Sensor $sensor): string
@@ -18,9 +19,9 @@ class LmSensors
         return $this->blocks[$sensor->getProvider()][$sensor->getIdent()] ?? 'X';
     }
 
-    private function load(): array
+    private function load(ShellWrapper $wrapper): array
     {
-        $raw = shell_exec("sensors -A");
+        $raw = $wrapper->shell_exec("sensors -A");
         $lines = explode("\n", $raw);
 
         $blocks = [];

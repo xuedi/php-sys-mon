@@ -22,7 +22,7 @@ run: ## show dashboard
 
 
 
-tests: test_unit test_psalm ## run all tests
+test: test_unit test_psalm ## run all tests
 
 test_unit: ## run unit tests
 	@./vendor/bin/phpunit --configuration tests/phpunit.xml

@@ -51,4 +51,4 @@
 
         <InvalidStringClass errorLevel="info"/>
     </issueHandlers>
-</psalm>
+<plugins><pluginClass class="Psalm\PhpUnitPlugin\Plugin"/></plugins></psalm>

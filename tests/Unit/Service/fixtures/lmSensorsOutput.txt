@@ -1,0 +1,98 @@
+k10temp-pci-00cb
+Tctl:         +63.9°C
+Tdie:         +36.9°C
+
+ucsi_source_psy_10_00081-i2c-10-08
+in0:           0.00 V  (min =  +0.00 V, max =  +0.00 V)
+curr1:         0.00 A  (max =  +0.00 A)
+
+nvme-pci-0c00
+Composite:    +32.9°C  (low  = -273.1°C, high = +81.8°C)
+                       (crit = +84.8°C)
+Sensor 1:     +32.9°C  (low  = -273.1°C, high = +65261.8°C)
+Sensor 2:     +35.9°C  (low  = -273.1°C, high = +65261.8°C)
+
+nvme-pci-0a00
+Composite:    +32.9°C  (low  = -273.1°C, high = +81.8°C)
+                       (crit = +84.8°C)
+Sensor 1:     +32.9°C  (low  = -273.1°C, high = +65261.8°C)
+Sensor 2:     +36.9°C  (low  = -273.1°C, high = +65261.8°C)
+
+nvme-pci-0900
+Composite:    +38.9°C  (low  = -273.1°C, high = +84.8°C)
+                       (crit = +84.8°C)
+Sensor 1:     +38.9°C  (low  = -273.1°C, high = +65261.8°C)
+Sensor 2:     +42.9°C  (low  = -273.1°C, high = +65261.8°C)
+
+iwlwifi_1-virtual-0
+temp1:        +33.0°C
+
+k10temp-pci-00c3
+Tctl:         +64.8°C
+Tdie:         +37.8°C
+Tccd1:        +62.2°C
+
+corsairpsu-hid-3-3
+v_in:        230.00 V
+v_out +12v:   12.11 V  (crit min =  +8.41 V, crit max = +15.59 V)
+v_out +5v:     5.00 V  (crit min =  +3.50 V, crit max =  +6.50 V)
+v_out +3.3v:   3.30 V  (crit min =  +2.31 V, crit max =  +4.30 V)
+psu fan:        0 RPM
+vrm temp:     +52.5°C  (crit = +70.0°C)
+case temp:    +40.2°C  (crit = +70.0°C)
+power total: 124.00 W
+power +12v:   96.00 W
+power +5v:    23.00 W
+power +3.3v:   6.00 W
+curr +12v:     8.25 A  (crit max = +100.00 A)
+curr +5v:      4.69 A  (crit max = +40.00 A)
+curr +3.3v:    1.88 A  (crit max = +40.00 A)
+
+asuswmisensors-isa-0000
+CPU Core Voltage:          1.42 V
+CPU SOC Voltage:           1.09 V
+DRAM AB Voltage:           1.18 V
+DRAM CD Voltage:           1.18 V
+1.8V PLL Voltage:          1.81 V
++12V Voltage:             11.97 V
++5V Voltage:               4.96 V
+3VSB Voltage:              3.27 V
+VBAT Voltage:              3.03 V
+AVCC3 Voltage:             3.29 V
+SB 1.05V Voltage:          1.04 V
+CPU Core Voltage:          1.41 V
+CPU SOC Voltage:           1.09 V
+DRAM AB Voltage:           1.20 V
+DRAM CD Voltage:           1.20 V
+CPU Fan:                  828 RPM
+Chassis Fan 1:           1128 RPM
+Chassis Fan 2:           1207 RPM
+Chassis Fan 3:           1184 RPM
+Water Pump 1:               0 RPM
+CPU OPT:                    0 RPM
+EXT Fan 1:                  0 RPM
+EXT Fan 2:                  0 RPM
+EXT Fan 3:                  0 RPM
+Cover Fan:                  0 RPM
+CPU Temperature:          +37.0°C
+CPU Socket Temperature:   +37.0°C
+Motherboard Temperature:  +31.0°C
+Chipset Temperature:      +49.0°C
+Tsensor Temperature:      +39.0°C
+CPU VRM Temperature:      +37.0°C
+EXT Tsensor 1:             +0.0°C
+EXT Tsensor 2:             +0.0°C
+EXT Tsensor 3:             +0.0°C
+CPU VRM Output Current:    2.00 A
+
+nvme-pci-0b00
+Composite:    +32.9°C  (low  = -273.1°C, high = +81.8°C)
+                       (crit = +84.8°C)
+Sensor 1:     +32.9°C  (low  = -273.1°C, high = +65261.8°C)
+Sensor 2:     +36.9°C  (low  = -273.1°C, high = +65261.8°C)
+
+nvme-pci-0d00
+Composite:    +32.9°C  (low  = -273.1°C, high = +81.8°C)
+                       (crit = +84.8°C)
+Sensor 1:     +32.9°C  (low  = -273.1°C, high = +65261.8°C)
+Sensor 2:     +34.9°C  (low  = -273.1°C, high = +65261.8°C)
